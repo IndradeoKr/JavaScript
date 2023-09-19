@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM learning</title>
+</head>
+<body style="background-color: black; color: white;">
+    <ul class="language">
+        <li>Cpp</li>
+    </ul>
+</body>
+<script>
+    function addLang(lang) // not a optamized way
+    {
+        const li = document.createElement('li')
+        li.innerHTML = `${lang}`
+        document.querySelector('.language').appendChild(li)
+    }
+    addLang("python")
+
+    function addLangOpt(lang) //optamized way
+    {
+        const li = document.createElement('li');
+        li.appendChild(document.createTextNode(lang))
+        document.querySelector('.language').appendChild(li)
+    }
+    addLangOpt("Java")
+
+    //Edit
+    const secondLang = document.querySelector("li:nth-child(2)")
+    // secondLang.innerHTML = "indradeo" // not optamized way
+
+    const newLi = document.createElement('li')
+    //both are same {textContent and appendChild}
+    // newLi.textContent = "JavaScript"
+    // secondLang.replaceWith(newLi)
+    newLi.appendChild(document.createTextNode("JavaScript"))
+    secondLang.replaceWith(newLi)
+
+    //edit 
+    const firstChild = document.querySelector('li:first-child')
+    firstChild.outerHTML = "<li>TypeScript</li>"
+
+    //remove
+    const lastChild = document.querySelector('li:last-child')
+    lastChild.remove()
+</script>
+</html>
